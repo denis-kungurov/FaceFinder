@@ -1,0 +1,4 @@
+/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/build-iphone8.4-10.2.1/mtouch-cache/Link/Xamarin.iOS.dll
+/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/build-iphone8.4-10.2.1/mtouch-cache/Link/FaceFinder.exe
+/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/build-iphone8.4-10.2.1/mtouch-cache/Link/System.dll
+/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/build-iphone8.4-10.2.1/mtouch-cache/Link/mscorlib.dll

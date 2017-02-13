@@ -1,0 +1,38 @@
+# Version: 10.3.1.7 (cycle8-xi: 8b53676)
+# [first argument, ignore] # /Library/Frameworks/Xamarin.iOS.framework/Versions/10.3.1.7/lib/mtouch/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/10.3.1.7/lib/mtouch/mtouch.exe \
+	--cache \
+	/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Debug/build-iphone8.4-10.2.1/mtouch-cache \
+	--dev \
+	/Users/deniskungurov/Projects/FaceFinder/FaceFinder/bin/iPhone/Debug/build-iphone8.4-10.2.1/FaceFinder.app \
+	--executable \
+	FaceFinder \
+	--fastdev \
+	--debug \
+	--linksdkonly \
+	--sdkroot \
+	/Applications/Xcode.app/Contents/Developer \
+	--sdk \
+	10.2 \
+	--targetver \
+	10.2 \
+	--aot-options=-O=float32 \
+	--http-message-handler=HttpClientHandler \
+	--tls-provider=default \
+	--abi=arm64 \
+	--symbollist \
+	/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Debug/build-iphone8.4-10.2.1/mtouch-symbols.list \
+	--dsym=no \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
+	--target-framework \
+	"Xamarin.iOS,v1.0" \
+	/Users/deniskungurov/Projects/FaceFinder/FaceFinder/bin/iPhone/Debug//FaceFinder.exe \

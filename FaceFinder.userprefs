@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{E4AEC4CF-E3A0-487B-AE2B-17202EE1BD2D}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="FaceFinder/AppDelegate.cs" Line="24" Column="48" />
+      <File FileName="FaceFinder/Main.cs" Line="10" Column="4" />
+      <File FileName="FaceFinder/MainWindowViewController.cs" Line="24" Column="117" />
+      <File FileName="FaceFinder/Entitlements.plist" />
+      <File FileName="FaceFinder/Info.plist" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FaceFinder" expanded="True">
+            <Node name="FaceFinder" expanded="True">
+              <Node name="Assets.xcassets" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.FaceFinder PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.69868e9d6b4f4d4d9b4be5efcaeeec64c6be7ed0" />
+</Properties>

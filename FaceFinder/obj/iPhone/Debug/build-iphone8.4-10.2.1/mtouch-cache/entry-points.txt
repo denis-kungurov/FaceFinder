@@ -1,0 +1,5 @@
+xamarin_get_block_descriptor
+UIApplicationMain
+xamarin_timezone_get_data
+xamarin_log
+mono_pmip
