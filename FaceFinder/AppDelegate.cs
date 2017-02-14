@@ -1,4 +1,10 @@
-﻿using Foundation;
+﻿using System;
+using AVFoundation;
+using CoreFoundation;
+using CoreGraphics;
+using CoreMedia;
+using CoreVideo;
+using Foundation;
 using UIKit;
 
 namespace FaceFinder
@@ -16,15 +22,103 @@ namespace FaceFinder
 			set;
 		}
 
-		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+		NSError Error;
+
+		//public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+		//{
+		//	// Override point for customization after application launch.
+		//	// If not required for your application you can safely delete this method
+		//	Window = new UIWindow(UIScreen.MainScreen.Bounds);
+		//	Window.RootViewController = Application.Root;
+		//	Window.MakeKeyAndVisible();
+
+		//	return true;
+		//}
+
+		public AVCaptureSession Session { get; set; }
+
+		public AVCaptureDevice CaptureDevice { get; set; }
+
+		public AVCaptureDeviceInput Input { get; set; }
+
+		public bool CameraAvailable { get; set; }
+
+		public DispatchQueue Queue { get; set; }
+
+		public OutputRecorder Recorder { get; set; }
+
+		public AVCaptureStillImageOutput StillImageOutput { get; set; }
+
+		public override void FinishedLaunching(UIApplication application)
 		{
-			// Override point for customization after application launch.
-			// If not required for your application you can safely delete this method
+
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 			Window.RootViewController = Application.Root;
 			Window.MakeKeyAndVisible();
+			// Create a new capture session
+			Session = new AVCaptureSession();
+			Session.SessionPreset = AVCaptureSession.PresetInputPriority;
 
-			return true;
+			// Create a device input
+			var CaptureDevices = AVCaptureDevice.DevicesWithMediaType(AVMediaType.Video);
+			foreach (var dev in CaptureDevices)
+			{
+				if (dev.Position == AVCaptureDevicePosition.Front)
+					CaptureDevice = dev;
+			}
+			if (CaptureDevice == null)
+				throw new Exception("Video recording not supported on this device");
+
+			// Prepare device for configuration
+			if (!CaptureDevice.LockForConfiguration(out Error))
+			{
+				// There has been an issue, abort
+				Console.WriteLine("Error: {0}", Error.LocalizedDescription);
+				CaptureDevice.UnlockForConfiguration();
+				return;
+			}
+
+			// Configure stream for 30 frames per second (fps)
+			CaptureDevice.ActiveVideoMinFrameDuration = new CMTime(1, 30);
+
+			// Unlock configuration
+			CaptureDevice.UnlockForConfiguration();
+
+			// Get input from capture device
+			Input = AVCaptureDeviceInput.FromDevice(CaptureDevice);
+			if (Input == null)
+			{
+				// Error, report and abort
+				Console.WriteLine("Unable to gain input from capture device.");
+				CameraAvailable = false;
+				return;
+			}
+
+			// Attach input to session
+			Session.AddInput(Input);
+
+			// Create a new output
+			var output = new AVCaptureVideoDataOutput();
+			var settings = new AVVideoSettingsUncompressed();
+			settings.PixelFormatType = CVPixelFormatType.CV32BGRA;
+			settings.ScalingMode = AVVideoScalingMode.Fit;
+
+			output.WeakVideoSettings = settings.Dictionary;
+
+			// Configure and attach to the output to the session
+			Queue = new DispatchQueue("ManCamQueue");
+			Recorder = new OutputRecorder();
+			output.SetSampleBufferDelegate(Recorder, Queue);
+			Session.AddOutput(output);
+
+			// Configure and attach a still image output for bracketed capture
+			StillImageOutput = new AVCaptureStillImageOutput();
+			var dict = new NSMutableDictionary();
+			dict[AVVideo.CodecKey] = new NSNumber((int)AVVideoCodec.JPEG);
+			Session.AddOutput(StillImageOutput);
+
+			// Let tabs know that a camera is available
+			CameraAvailable = true;
 		}
 
 		public override void OnResignActivation(UIApplication application)
@@ -57,6 +151,8 @@ namespace FaceFinder
 		{
 			// Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
 		}
+
+
 	}
 }
 

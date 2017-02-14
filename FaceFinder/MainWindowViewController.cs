@@ -11,13 +11,20 @@ namespace FaceFinder
 		public UILabel HelloLabel;
 		public UILabel CountLabel;
 		public UIButton ClickButton;
-		public UIButton CameraButton;
+		//public UIButton CameraButton;
 		public UIImagePickerController imagePicker;
 		public bool onlyPhoto = true;
 
 		public UIImageView PhotoImageView;
 		public MainWindowViewController()
 		{
+			PhotoImageView = new UIImageView();
+			PhotoImageView.BackgroundColor = UIColor.Black;
+
+			PhotoImageView.Frame = View.Bounds;
+			//PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+			View.AddSubview(PhotoImageView);
+
 			HelloLabel = new UILabel();
 			HelloLabel.Text = "Hello World!!";
 			HelloLabel.Font = UIFont.PreferredTitle1;
@@ -38,16 +45,14 @@ namespace FaceFinder
 			ClickButton.BackgroundColor = UIColor.Blue;
 			ClickButton.SetTitleColor(UIColor.Yellow, UIControlState.Normal);
 
-			CameraButton = new UIButton(new CGRect(UIScreen.MainScreen.Bounds.Width / 4, ClickButton.Frame.GetMaxY() + 10f, UIScreen.MainScreen.Bounds.Width / 2, 50f));
-			CameraButton.SetTitle("Open Camera", UIControlState.Normal);
-			View.AddSubview(CameraButton);
+			//CameraButton = new UIButton(new CGRect(UIScreen.MainScreen.Bounds.Width / 4, ClickButton.Frame.GetMaxY() + 10f, UIScreen.MainScreen.Bounds.Width / 2, 50f));
+			//CameraButton.SetTitle("Open Camera", UIControlState.Normal);
+			//View.AddSubview(CameraButton);
 
-			CameraButton.BackgroundColor = UIColor.Brown;
-			CameraButton.SetTitleColor(UIColor.DarkGray, UIControlState.Normal);
+			//CameraButton.BackgroundColor = UIColor.Brown;
+			//CameraButton.SetTitleColor(UIColor.DarkGray, UIControlState.Normal);
 
-			PhotoImageView = new UIImageView(new CGRect(0, CameraButton.Frame.GetMaxY() + 20f, 160f, 0));
-			PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
-			View.AddSubview(PhotoImageView);
+
 		}
 
 		//public override bool ShouldAutorotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation)
@@ -60,7 +65,15 @@ namespace FaceFinder
 		{
 			base.ViewDidLoad();
 			View.BackgroundColor = UIColor.Green;
+			//View.Alpha = 0.5f;
+		}
 
+		public AppDelegate ThisApp
+		{
+			get
+			{
+				return (AppDelegate)UIApplication.SharedApplication.Delegate;
+			}
 		}
 
 		public override void ViewDidAppear(bool animated)
@@ -71,24 +84,31 @@ namespace FaceFinder
 			CountLabel.Frame = new CoreGraphics.CGRect(CountLabel.Frame.Location, CountLabel.IntrinsicContentSize);
 			ClickButton.TouchUpInside += ClickButton_TouchUpInside;
 
-			CameraButton.TouchUpInside += CameraButton_TouchUpInside;
-		}
-		public void Handle_Canceled(object sender, EventArgs e)
-		{
-			imagePicker.DismissModalViewController(true);
-			imagePicker.Canceled -= Handle_Canceled;
-		}
+			//CameraButton.TouchUpInside += CameraButton_TouchUpInside;
 
-		public void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
-		{
-			imagePicker.DismissModalViewController(true);
-			InvokeOnMainThread(() => {
-				PhotoImageView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CameraButton.Frame.GetMaxY() + 20f, UIScreen.MainScreen.Bounds.Width / 2, UIScreen.MainScreen.Bounds.Height - CameraButton.Frame.GetMaxY() - 60f);
-				PhotoImageView.Image = e.OriginalImage;
-			});
-			imagePicker.FinishedPickingMedia -= Handle_FinishedPickingMedia;
-			//ImageChoosen?.Invoke(null, e);
-		}	
+			if (ThisApp.CameraAvailable)
+			{
+				// Remap to this camera view
+				ThisApp.Recorder.DisplayView = PhotoImageView;
+				ThisApp.Session.StartRunning();
+			}
+		}
+		//public void Handle_Canceled(object sender, EventArgs e)
+		//{
+		//	imagePicker.DismissModalViewController(true);
+		//	imagePicker.Canceled -= Handle_Canceled;
+		//}
+
+		//public void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
+		//{
+		//	imagePicker.DismissModalViewController(true);
+		//	InvokeOnMainThread(() => {
+		//		PhotoImageView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CameraButton.Frame.GetMaxY() + 20f, UIScreen.MainScreen.Bounds.Width / 2, UIScreen.MainScreen.Bounds.Height - CameraButton.Frame.GetMaxY() - 60f);
+		//		PhotoImageView.Image = e.OriginalImage;
+		//	});
+		//	imagePicker.FinishedPickingMedia -= Handle_FinishedPickingMedia;
+		//	//ImageChoosen?.Invoke(null, e);
+		//}	
 
 		void ClickButton_TouchUpInside (object sender, EventArgs e)
 		{
@@ -97,25 +117,25 @@ namespace FaceFinder
 			CountLabel.Frame = new CoreGraphics.CGRect(CountLabel.Frame.Location, CountLabel.IntrinsicContentSize);
 		}
 
-		void CameraButton_TouchUpInside(object sender, EventArgs e)
-		{
-			if(imagePicker == null)
-				imagePicker = new UIImagePickerController();
-			imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
-			if (!onlyPhoto)
-				imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
-			imagePicker.CameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo;
+		//void CameraButton_TouchUpInside(object sender, EventArgs e)
+		//{
+		//	if(imagePicker == null)
+		//		imagePicker = new UIImagePickerController();
+		//	imagePicker.SourceType = UIImagePickerControllerSourceType.Camera;
+		//	if (!onlyPhoto)
+		//		imagePicker.MediaTypes = UIImagePickerController.AvailableMediaTypes(UIImagePickerControllerSourceType.PhotoLibrary);
+		//	imagePicker.CameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo;
 
-			imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
-			imagePicker.Canceled += Handle_Canceled;
-			Application.Root.PresentModalViewController(imagePicker, true);
-		}
+		//	imagePicker.FinishedPickingMedia += Handle_FinishedPickingMedia;
+		//	imagePicker.Canceled += Handle_Canceled;
+		//	Application.Root.PresentModalViewController(imagePicker, true);
+		//}
 
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
 			ClickButton.TouchUpInside -= ClickButton_TouchUpInside;
-			CameraButton.TouchUpInside -= CameraButton_TouchUpInside;
+			//CameraButton.TouchUpInside -= CameraButton_TouchUpInside;
 		}
 	}
 }
