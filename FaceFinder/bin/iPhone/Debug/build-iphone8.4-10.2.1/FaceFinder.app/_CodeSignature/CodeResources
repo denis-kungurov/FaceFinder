@@ -6,15 +6,15 @@
 	<dict>
 		<key>.monotouch-64/FaceFinder.arm64.aotdata</key>
 		<data>
-		7+JmbnEhFmvzrybuvm3pv0E73kQ=
+		pWbXZmCBVAa/HEkd20iwm8UY5Ao=
 		</data>
 		<key>.monotouch-64/FaceFinder.exe</key>
 		<data>
-		MXVKK1J38zGT2jITFoLCUPEK8Eo=
+		93bOvhqd6i+OH1tHPd5dnbP32Kc=
 		</data>
 		<key>.monotouch-64/FaceFinder.exe.mdb</key>
 		<data>
-		UlRCUcOgQ3/bse+pzm7W51lw2pk=
+		a1DhNu2eHFNmgZdRiFCxUk74I4s=
 		</data>
 		<key>.monotouch-64/System.arm64.aotdata</key>
 		<data>
@@ -30,15 +30,15 @@
 		</data>
 		<key>.monotouch-64/Xamarin.iOS.arm64.aotdata</key>
 		<data>
-		fwIn9gE/iqcCt/G53pkE7PSIwMo=
+		svlG9/ZLDwLwbyMhgEsSCfpG4Mg=
 		</data>
 		<key>.monotouch-64/Xamarin.iOS.dll</key>
 		<data>
-		fuQaTM6tarWpUauEbV5+ht6NjqI=
+		im+kIzNhhBNV+bmjNeLHtWqOdeA=
 		</data>
 		<key>.monotouch-64/Xamarin.iOS.dll.mdb</key>
 		<data>
-		mkumABl8gNVZzyVWWGkX45fECEA=
+		iH+7aTBXz76DPE8rAYOAQgWOcVE=
 		</data>
 		<key>.monotouch-64/mscorlib.arm64.aotdata</key>
 		<data>
@@ -54,11 +54,15 @@
 		</data>
 		<key>.uploaded</key>
 		<data>
-		LZnxKBU7oQl3htnEEpg42rFOk8o=
+		Zf5IKsYf7b6wQYiVZ7XagdyFPrY=
+		</data>
+		<key>AppIcon29x29@2x.png</key>
+		<data>
+		ifscmZzzS/TM7nRgYLFuE4sdFP0=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Y+xIQs1cypMcuqUGVLSvWys/IKA=
+		vw01hFAp9d2EcyGSCmu/nMuk5pk=
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -110,27 +114,27 @@
 		</data>
 		<key>libFaceFinder.exe.dylib</key>
 		<data>
-		kyEFJGV6LeQdneGvw9k9DIkUt38=
+		/B0HVSqB39WCByEbYhfUc0i5XVs=
 		</data>
 		<key>libSystem.dll.dylib</key>
 		<data>
-		zLhISFR0uZZbI10O121UjZO3KKY=
+		kjYyMUxRrepeLsJ5ppZSM0zG/Pk=
 		</data>
 		<key>libXamarin.iOS.dll.dylib</key>
 		<data>
-		/sWozk5XmaI3cvxronw0/dvFlTU=
+		S9iWICgHe/d0+HBWtszNnMPsemw=
 		</data>
 		<key>libmonosgen-2.0.dylib</key>
 		<data>
-		aj695qYBPflURIsvOW1m07844Is=
+		Y2oDKpatWntVl65nuP+UgfTn6pA=
 		</data>
 		<key>libmscorlib.dll.dylib</key>
 		<data>
-		Spw6/mg48wTTPmyfId2SR9YdtA8=
+		eXbmDX30PzI+aZ/EdAJaMdcjMV8=
 		</data>
 		<key>libxamarin-debug.dylib</key>
 		<data>
-		RkWs0Dtr5TyiqqSGr80ChaTscn8=
+		GuoEK1WTD7Q5GTgewu9rg0e65Vk=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -139,33 +143,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7+JmbnEhFmvzrybuvm3pv0E73kQ=
+			pWbXZmCBVAa/HEkd20iwm8UY5Ao=
 			</data>
 			<key>hash2</key>
 			<data>
-			OZTlLWbut8kLUREZjKWwKn1ul8BtpNJ/A3/i91SCarM=
+			XF+T8jdipb7KnM3BeoOIlZ6ykvaaICPtFQ3eaxv/wwE=
 			</data>
 		</dict>
 		<key>.monotouch-64/FaceFinder.exe</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MXVKK1J38zGT2jITFoLCUPEK8Eo=
+			93bOvhqd6i+OH1tHPd5dnbP32Kc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ox1/6hkt5rkBOgs5lGrybNTJitV6b4h0L1HPurKM0K8=
+			Qd4H5bCqKdHf86nzj/WSTHSVjCoFg0wYd6uaj2wMNzE=
 			</data>
 		</dict>
 		<key>.monotouch-64/FaceFinder.exe.mdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UlRCUcOgQ3/bse+pzm7W51lw2pk=
+			a1DhNu2eHFNmgZdRiFCxUk74I4s=
 			</data>
 			<key>hash2</key>
 			<data>
-			Mk6MiggRymy/Pg4PSScKW//s1lJO1QJhkw4+AebWLgU=
+			ua3Lf8uobNW5aaqmA0DtRpmiZTJMFaeKedo3cCszSyQ=
 			</data>
 		</dict>
 		<key>.monotouch-64/System.arm64.aotdata</key>
@@ -205,33 +209,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fwIn9gE/iqcCt/G53pkE7PSIwMo=
+			svlG9/ZLDwLwbyMhgEsSCfpG4Mg=
 			</data>
 			<key>hash2</key>
 			<data>
-			n6ugF5JYWTJv3Ys/yM9VeOsTQuo4YugWiLsX4IvIjVk=
+			ZryHccYynnSJgLW3zwabYvqG2aTAPCFUZO9pVuaAB4g=
 			</data>
 		</dict>
 		<key>.monotouch-64/Xamarin.iOS.dll</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fuQaTM6tarWpUauEbV5+ht6NjqI=
+			im+kIzNhhBNV+bmjNeLHtWqOdeA=
 			</data>
 			<key>hash2</key>
 			<data>
-			xBtUohcLWdNUTZmyuaL8eH3LgCwS3n8aPkCyYhr1TRM=
+			e5kiDEhEum3jejgjJTth0vLRoFKvwRccF+38VFutCVg=
 			</data>
 		</dict>
 		<key>.monotouch-64/Xamarin.iOS.dll.mdb</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mkumABl8gNVZzyVWWGkX45fECEA=
+			iH+7aTBXz76DPE8rAYOAQgWOcVE=
 			</data>
 			<key>hash2</key>
 			<data>
-			r7Zxqg1S3KPyjIPVKAyMw+wfNb/EGQvRT881BTzYtP0=
+			ngR0OoPSA05oSnGhToRVIc0XRzn0HyNeO1LNq6B1ao0=
 			</data>
 		</dict>
 		<key>.monotouch-64/mscorlib.arm64.aotdata</key>
@@ -271,11 +275,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LZnxKBU7oQl3htnEEpg42rFOk8o=
+			Zf5IKsYf7b6wQYiVZ7XagdyFPrY=
 			</data>
 			<key>hash2</key>
 			<data>
-			2VIP2DC4nUCOv/UJgnX2xs+V91WgJU7DIMKn4DO9uAo=
+			GCXPSVs9WoKmPzuIL2a/5OKOcyeWuSmW3JHhngJHgTs=
+			</data>
+		</dict>
+		<key>AppIcon29x29@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ifscmZzzS/TM7nRgYLFuE4sdFP0=
+			</data>
+			<key>hash2</key>
+			<data>
+			4dNKxCkIA52L+WXz5FX+iJmkH0YwDmr0jMZ7NiqlKOI=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -403,66 +418,66 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kyEFJGV6LeQdneGvw9k9DIkUt38=
+			/B0HVSqB39WCByEbYhfUc0i5XVs=
 			</data>
 			<key>hash2</key>
 			<data>
-			iA3q1tVgQusmfytLUnh1hTybo4Umu/L86VRf6nNVuwk=
+			cBptEvI7GidkKI1uvwcK1sntqpQvZ8kviP9RTl3aRlc=
 			</data>
 		</dict>
 		<key>libSystem.dll.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zLhISFR0uZZbI10O121UjZO3KKY=
+			kjYyMUxRrepeLsJ5ppZSM0zG/Pk=
 			</data>
 			<key>hash2</key>
 			<data>
-			qKcRCMMp339z7US+NRxCnlTZIYk5DUPxv5tlrk4dEQI=
+			guRFTl0zBThd5EpyzwZN89jzu1Mdvq1FLFeM2eNLYX4=
 			</data>
 		</dict>
 		<key>libXamarin.iOS.dll.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/sWozk5XmaI3cvxronw0/dvFlTU=
+			S9iWICgHe/d0+HBWtszNnMPsemw=
 			</data>
 			<key>hash2</key>
 			<data>
-			+I9VNWZmZN1jibLujzOY4YwqhBx8hf6eN6B5pAyc41o=
+			HgQzXAI7XuauGM5CeQbXgWTRVyscSlVHvpKb3CTo3SY=
 			</data>
 		</dict>
 		<key>libmonosgen-2.0.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aj695qYBPflURIsvOW1m07844Is=
+			Y2oDKpatWntVl65nuP+UgfTn6pA=
 			</data>
 			<key>hash2</key>
 			<data>
-			gRNmujO/RcyLBCoLf7mWPaFgUbEMaxOD8jnN0rIj9JU=
+			cxsRXf/cCRxQcRktzqnIl9Rpwr7EUfkDF/fEGEQSibk=
 			</data>
 		</dict>
 		<key>libmscorlib.dll.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Spw6/mg48wTTPmyfId2SR9YdtA8=
+			eXbmDX30PzI+aZ/EdAJaMdcjMV8=
 			</data>
 			<key>hash2</key>
 			<data>
-			+CuzApfELQtx/pt9D9KFsb4PPugFdEb4+LzReEaI0Ig=
+			Ekl0/WEdIuIEOwKBRzmxAgtitoKLNmqYwGpE9XpurIs=
 			</data>
 		</dict>
 		<key>libxamarin-debug.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RkWs0Dtr5TyiqqSGr80ChaTscn8=
+			GuoEK1WTD7Q5GTgewu9rg0e65Vk=
 			</data>
 			<key>hash2</key>
 			<data>
-			VLkpv08Jd8PorVAHcUKwAd94lMGUlME00eZKJRcmyLA=
+			RGrHvEAmISyOqL/Rto+TiBrADNIDMv4T/qA6v36JVg0=
 			</data>
 		</dict>
 	</dict>

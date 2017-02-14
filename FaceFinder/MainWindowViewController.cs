@@ -49,6 +49,12 @@ namespace FaceFinder
 			View.AddSubview(PhotoImageView);
 		}
 
+		public override bool ShouldAutorotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation)
+		{
+			return toInterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
+				toInterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
+		}
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -78,6 +84,7 @@ namespace FaceFinder
 			PhotoImageView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CameraButton.Frame.GetMaxY() + 20f, UIScreen.MainScreen.Bounds.Width / 2, UIScreen.MainScreen.Bounds.Height - CameraButton.Frame.GetMaxY() - 60f);
 			PhotoImageView.Image = e.OriginalImage;
 			PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+
 			imagePicker.FinishedPickingMedia -= Handle_FinishedPickingMedia;
 			//ImageChoosen?.Invoke(null, e);
 		}	

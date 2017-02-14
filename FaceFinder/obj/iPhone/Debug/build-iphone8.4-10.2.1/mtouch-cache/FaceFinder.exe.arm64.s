@@ -3076,7 +3076,7 @@ ldr x16, [x16, #368]
 .word 0xaa0203e0
 .word 0xd2800021
 .word 0xf9400042
-.word 0xf9414c50
+.word 0xf9415050
 .word 0xd63f0200
 .loc 3 72 0
 .word 0xf94017b1
@@ -3217,7 +3217,7 @@ ldr x16, [x16, #400]
 .word 0xaa0203e0
 .word 0xd2800021
 .word 0xf9400042
-.word 0xf9414c50
+.word 0xf9415050
 .word 0xd63f0200
 .loc 3 78 0
 .word 0xf94017b1
@@ -3618,6 +3618,20 @@ bl _p_37
 .word 0xb4000051
 .word 0xd63f0220
 .word 0xaa1903e0
+.word 0xf94017b1
+.word 0xf9473a31
+.word 0xb4000051
+.word 0xd63f0220
+.word 0xaa1903e0
+.word 0xf9400321
+.word 0xf9412830
+.word 0xd63f0200
+.loc 3 82 0
+.word 0xf94017b1
+.word 0xf9475a31
+.word 0xb4000051
+.word 0xd63f0220
+.word 0xaa1903e0
 .word 0xf9402b20
 .word 0xf900cfa0
 .word 0xaa1903e0
@@ -3656,7 +3670,7 @@ ldr x1, [x16, #432]
 .word 0x3901801f
 .word 0xf900cba0
 .word 0xf94017b1
-.word 0xf947be31
+.word 0xf947f231
 .word 0xb4000051
 .word 0xd63f0220
 .word 0xf940cba1
@@ -3664,13 +3678,13 @@ ldr x1, [x16, #432]
 .word 0xaa0203e0
 .word 0xf940005e
 bl _p_38
-.loc 3 83 0
+.loc 3 84 0
 .word 0xf94017b1
-.word 0xf947e231
+.word 0xf9481631
 .word 0xb4000051
 .word 0xd63f0220
 .word 0xf94017b1
-.word 0xf947f231
+.word 0xf9482631
 .word 0xb4000051
 .word 0xd63f0220
 .word 0xf9400bb9
@@ -3690,7 +3704,7 @@ Lme_f:
 	.align 4
 	.no_dead_strip FaceFinder_MainWindowViewController_ClickButton_TouchUpInside_object_System_EventArgs
 FaceFinder_MainWindowViewController_ClickButton_TouchUpInside_object_System_EventArgs:
-.loc 3 86 0 prologue_end
+.loc 3 87 0 prologue_end
 .word 0xa9ad7bfd
 .word 0x910003fd
 .word 0xa9016bb9
@@ -3722,7 +3736,7 @@ ldr x16, [x16, #440]
 .word 0xf9407631
 .word 0xb4000051
 .word 0xd63f0220
-.loc 3 87 0
+.loc 3 88 0
 .word 0xf9401bb1
 .word 0xf9408631
 .word 0xb4000051
@@ -3734,7 +3748,7 @@ ldr x16, [x16, #440]
 .word 0xb9806340
 .word 0x11000400
 .word 0xb9006340
-.loc 3 88 0
+.loc 3 89 0
 .word 0xf9401bb1
 .word 0xf940b231
 .word 0xb4000051
@@ -3765,7 +3779,7 @@ bl _p_29
 .word 0xf9400042
 .word 0xf9419450
 .word 0xd63f0200
-.loc 3 89 0
+.loc 3 90 0
 .word 0xf9401bb1
 .word 0xf9412a31
 .word 0xb4000051
@@ -3882,7 +3896,7 @@ bl _p_31
 .word 0xf9400021
 .word 0xf9413430
 .word 0xd63f0200
-.loc 3 90 0
+.loc 3 91 0
 .word 0xf9401bb1
 .word 0xf942fa31
 .word 0xb4000051
@@ -3904,7 +3918,7 @@ Lme_10:
 	.align 4
 	.no_dead_strip FaceFinder_MainWindowViewController_CameraButton_TouchUpInside_object_System_EventArgs
 FaceFinder_MainWindowViewController_CameraButton_TouchUpInside_object_System_EventArgs:
-.loc 3 93 0 prologue_end
+.loc 3 94 0 prologue_end
 .word 0xa9b77bfd
 .word 0x910003fd
 .word 0xf9000bba
@@ -3930,7 +3944,7 @@ ldr x16, [x16, #448]
 .word 0xf9405e31
 .word 0xb4000051
 .word 0xd63f0220
-.loc 3 94 0
+.loc 3 95 0
 .word 0xf94017b1
 .word 0xf9406e31
 .word 0xb4000051
@@ -3938,7 +3952,7 @@ ldr x16, [x16, #448]
 .word 0xaa1a03e0
 .word 0xf9402b40
 .word 0xb5000340
-.loc 3 95 0
+.loc 3 96 0
 .word 0xf94017b1
 .word 0xf9408a31
 .word 0xb4000051
@@ -3965,7 +3979,7 @@ bl _p_39
 .word 0x91014340
 bl _p_5
 .word 0xf94023a0
-.loc 3 96 0
+.loc 3 97 0
 .word 0xf9401bb1
 .word 0xf9400231
 .word 0xb4000051
@@ -3986,9 +4000,9 @@ bl _p_5
 .word 0xaa0203e0
 .word 0xd2800021
 .word 0xf9400042
-.word 0xf9415450
+.word 0xf9415850
 .word 0xd63f0200
-.loc 3 97 0
+.loc 3 98 0
 .word 0xf94017b1
 .word 0xf9414631
 .word 0xb4000051
@@ -3996,7 +4010,7 @@ bl _p_5
 .word 0xaa1a03e0
 .word 0x39419340
 .word 0x35000340
-.loc 3 98 0
+.loc 3 99 0
 .word 0xf94017b1
 .word 0xf9416231
 .word 0xb4000051
@@ -4020,9 +4034,9 @@ bl _p_40
 .word 0xf94027a2
 .word 0xaa0203e0
 .word 0xf9400042
-.word 0xf9415850
+.word 0xf9415c50
 .word 0xd63f0200
-.loc 3 99 0
+.loc 3 100 0
 .word 0xf9401bb1
 .word 0xf9400231
 .word 0xb4000051
@@ -4043,9 +4057,9 @@ bl _p_40
 .word 0xaa0203e0
 .word 0xd2800001
 .word 0xf9400042
-.word 0xf9416450
+.word 0xf9416850
 .word 0xd63f0200
-.loc 3 101 0
+.loc 3 102 0
 .word 0xf94017b1
 .word 0xf9421e31
 .word 0xb4000051
@@ -4097,7 +4111,7 @@ ldr x1, [x16, #432]
 .word 0xaa0203e0
 .word 0xf940005e
 bl _p_41
-.loc 3 102 0
+.loc 3 103 0
 .word 0xf94017b1
 .word 0xf942da31
 .word 0xb4000051
@@ -4149,7 +4163,7 @@ ldr x1, [x16, #392]
 .word 0xaa0203e0
 .word 0xf940005e
 bl _p_42
-.loc 3 103 0
+.loc 3 104 0
 .word 0xf94017b1
 .word 0xf9439631
 .word 0xb4000051
@@ -4173,9 +4187,9 @@ ldr x0, [x16, #136]
 .word 0xaa0303e0
 .word 0xd2800022
 .word 0xf9400063
-.word 0xf9413c70
+.word 0xf9414070
 .word 0xd63f0200
-.loc 3 104 0
+.loc 3 105 0
 .word 0xf94017b1
 .word 0xf943f631
 .word 0xb4000051
@@ -4197,7 +4211,7 @@ Lme_11:
 	.align 4
 	.no_dead_strip FaceFinder_MainWindowViewController_ViewDidDisappear_bool
 FaceFinder_MainWindowViewController_ViewDidDisappear_bool:
-.loc 3 107 0 prologue_end
+.loc 3 108 0 prologue_end
 .word 0xa9b87bfd
 .word 0x910003fd
 .word 0xf9000bb9
@@ -4222,7 +4236,7 @@ ldr x16, [x16, #464]
 .word 0xf9405a31
 .word 0xb4000051
 .word 0xd63f0220
-.loc 3 108 0
+.loc 3 109 0
 .word 0xf94013b1
 .word 0xf9406a31
 .word 0xb4000051
@@ -4237,7 +4251,7 @@ ldr x16, [x16, #464]
 .word 0xf9403ba1
 .word 0xaa1903e0
 bl _p_43
-.loc 3 109 0
+.loc 3 110 0
 .word 0xf94013b1
 .word 0xf940a231
 .word 0xb4000051
@@ -4289,7 +4303,7 @@ ldr x1, [x16, #336]
 .word 0xaa0203e0
 .word 0xf940005e
 bl _p_44
-.loc 3 110 0
+.loc 3 111 0
 .word 0xf94013b1
 .word 0xf9415e31
 .word 0xb4000051
@@ -4341,7 +4355,7 @@ ldr x1, [x16, #360]
 .word 0xaa0203e0
 .word 0xf940005e
 bl _p_44
-.loc 3 111 0
+.loc 3 112 0
 .word 0xf94013b1
 .word 0xf9421a31
 .word 0xb4000051
@@ -5041,7 +5055,7 @@ runtime_version:
 .section __TEXT, __const
 	.align 2
 assembly_guid:
-	.asciz "F135BA37-1C06-48EE-94ED-4BD5F1B5F62D"
+	.asciz "042D5CAE-4719-494E-9257-1C2D142AA728"
 .section __TEXT, __const
 	.align 2
 assembly_name:
@@ -5118,13 +5132,13 @@ _mono_aot_file_info:
 	.align 3
 	.quad unbox_trampoline_addresses
 
-	.long 61,864,47,21,70,923871743,0,6954
-	.long 128,8,8,10,0,14,7672,712
+	.long 61,864,47,21,70,923871743,0,6980
+	.long 128,8,8,10,0,14,7704,712
 	.long 456,208,0,360,424,256,0,192
 	.long 48,0,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0
-	.byte 169,178,93,29,193,10,158,108,17,226,46,36,251,122,225,225
+	.byte 79,206,176,131,196,254,42,163,203,114,129,37,149,241,214,198
 	.globl _mono_aot_module_FaceFinder_info
 	.align 3
 _mono_aot_module_FaceFinder_info:
@@ -6486,7 +6500,7 @@ Lfde15_end:
 	.asciz "FaceFinder.MainWindowViewController:ClickButton_TouchUpInside"
 	.asciz "FaceFinder_MainWindowViewController_ClickButton_TouchUpInside_object_System_EventArgs"
 
-	.byte 3,86
+	.byte 3,87
 	.quad FaceFinder_MainWindowViewController_ClickButton_TouchUpInside_object_System_EventArgs
 	.quad Lme_10
 
@@ -6535,7 +6549,7 @@ Lfde16_end:
 	.asciz "FaceFinder.MainWindowViewController:CameraButton_TouchUpInside"
 	.asciz "FaceFinder_MainWindowViewController_CameraButton_TouchUpInside_object_System_EventArgs"
 
-	.byte 3,93
+	.byte 3,94
 	.quad FaceFinder_MainWindowViewController_CameraButton_TouchUpInside_object_System_EventArgs
 	.quad Lme_11
 
@@ -6579,7 +6593,7 @@ Lfde17_end:
 	.asciz "FaceFinder.MainWindowViewController:ViewDidDisappear"
 	.asciz "FaceFinder_MainWindowViewController_ViewDidDisappear_bool"
 
-	.byte 3,107
+	.byte 3,108
 	.quad FaceFinder_MainWindowViewController_ViewDidDisappear_bool
 	.quad Lme_12
 
