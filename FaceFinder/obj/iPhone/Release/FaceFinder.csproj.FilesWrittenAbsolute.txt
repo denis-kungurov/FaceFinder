@@ -1,9 +1,0 @@
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/ibtool/_BundleResourceWithLogicalName.items
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/actool/_PartialAppManifest.items
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/actool/_BundleResourceWithLogicalName.items
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/build-iphone8.4-10.2.1/optimized/
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/bin/iPhone/Release/FaceFinder.exe.mdb
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/bin/iPhone/Release/FaceFinder.exe
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/FaceFinder.exe
-/Users/deniskungurov/Projects/FaceFinder/FaceFinder/obj/iPhone/Release/FaceFinder.exe.mdb

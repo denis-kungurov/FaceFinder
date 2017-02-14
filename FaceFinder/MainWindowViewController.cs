@@ -45,15 +45,16 @@ namespace FaceFinder
 			CameraButton.BackgroundColor = UIColor.Brown;
 			CameraButton.SetTitleColor(UIColor.DarkGray, UIControlState.Normal);
 
-			PhotoImageView = new UIImageView(new CGRect(0, CameraButton.Frame.GetMaxY() + 20f, 0, 0));
+			PhotoImageView = new UIImageView(new CGRect(0, CameraButton.Frame.GetMaxY() + 20f, 160f, 0));
+			PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			View.AddSubview(PhotoImageView);
 		}
 
-		public override bool ShouldAutorotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation)
-		{
-			return toInterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
-				toInterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
-		}
+		//public override bool ShouldAutorotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation)
+		//{
+		//	return toInterfaceOrientation == UIInterfaceOrientation.LandscapeLeft ||
+		//		toInterfaceOrientation == UIInterfaceOrientation.LandscapeRight;
+		//}
 
 		public override void ViewDidLoad()
 		{
@@ -81,10 +82,10 @@ namespace FaceFinder
 		public void Handle_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
 		{
 			imagePicker.DismissModalViewController(true);
-			PhotoImageView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CameraButton.Frame.GetMaxY() + 20f, UIScreen.MainScreen.Bounds.Width / 2, UIScreen.MainScreen.Bounds.Height - CameraButton.Frame.GetMaxY() - 60f);
-			PhotoImageView.Image = e.OriginalImage;
-			PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
-
+			InvokeOnMainThread(() => {
+				PhotoImageView.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CameraButton.Frame.GetMaxY() + 20f, UIScreen.MainScreen.Bounds.Width / 2, UIScreen.MainScreen.Bounds.Height - CameraButton.Frame.GetMaxY() - 60f);
+				PhotoImageView.Image = e.OriginalImage;
+			});
 			imagePicker.FinishedPickingMedia -= Handle_FinishedPickingMedia;
 			//ImageChoosen?.Invoke(null, e);
 		}	
