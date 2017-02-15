@@ -106,6 +106,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="Resources\haarcascade_frontalface_alt.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -113,6 +114,15 @@
     <Compile Include="MainWindowViewController.cs" />
     <Compile Include="CameraViewController.cs" />
     <Compile Include="OutputRecorder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Downloads\xamarin.ios-opencv-master\xamarin\FaceDetector.OpenCVXamarin\FaceDetector.OpenCVXamarin.Binding\FaceDetector.OpenCVXamarin.Binding.csproj">
+      <Project>{34EB4D18-4720-4FCC-A408-A655824469D9}</Project>
+      <Name>FaceDetector.OpenCVXamarin.Binding</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lena1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

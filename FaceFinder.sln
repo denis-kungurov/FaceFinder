@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceFinder", "FaceFinder\FaceFinder.csproj", "{E4AEC4CF-E3A0-487B-AE2B-17202EE1BD2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceDetector.OpenCVXamarin.Binding", "..\..\Downloads\xamarin.ios-opencv-master\xamarin\FaceDetector.OpenCVXamarin\FaceDetector.OpenCVXamarin.Binding\FaceDetector.OpenCVXamarin.Binding.csproj", "{34EB4D18-4720-4FCC-A408-A655824469D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,5 +21,13 @@ Global
 		{E4AEC4CF-E3A0-487B-AE2B-17202EE1BD2D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{E4AEC4CF-E3A0-487B-AE2B-17202EE1BD2D}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{E4AEC4CF-E3A0-487B-AE2B-17202EE1BD2D}.Debug|iPhone.Build.0 = Debug|iPhone
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Release|iPhone.Build.0 = Release|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{34EB4D18-4720-4FCC-A408-A655824469D9}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -79,7 +79,7 @@ namespace FaceFinder
 			}
 
 			// Configure stream for 30 frames per second (fps)
-			CaptureDevice.ActiveVideoMinFrameDuration = new CMTime(1, 30);
+			CaptureDevice.ActiveVideoMinFrameDuration = new CMTime(1, 15);
 
 			// Unlock configuration
 			CaptureDevice.UnlockForConfiguration();

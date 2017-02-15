@@ -3,7 +3,9 @@ using AVFoundation;
 using CoreGraphics;
 using CoreMedia;
 using CoreVideo;
+using Foundation;
 using UIKit;
+
 
 namespace FaceFinder
 {
@@ -15,6 +17,9 @@ namespace FaceFinder
 		/// </summary>
 		/// <value>The display view.</value>
 		public UIImageView DisplayView { get; set; }
+		private FaceDetector.OpenCVXamarin.Binding.FaceDetector _faceDetector;
+		public event EventHandler<CGRect> findRect;
+		public event EventHandler<UIImage> sentImage;
 		#endregion
 
 		#region Constructors
@@ -23,6 +28,9 @@ namespace FaceFinder
 		/// </summary>
 		public OutputRecorder()
 		{
+			string filePath = NSBundle.MainBundle.PathForResource("haarcascade_frontalface_alt", "xml");
+			_faceDetector = new FaceDetector.OpenCVXamarin.Binding.FaceDetector(filePath);
+			sentImage += OutputRecorder_SentImage;
 
 		}
 		#endregion
@@ -105,6 +113,14 @@ namespace FaceFinder
 
 						DisplayView.Image = image;
 
+						//UIImage srcImage = UIImage.FromBundle("lena1");
+						InvokeInBackground(() => { sentImage?.Invoke(null, image); });
+
+
+						////redraw image
+						//UIImage resultImage = DrawFaces(image, arrFaces);
+
+
 							// Rotate image to the correct display orientation
 							//DisplayView.Transform = CGAffineTransform.MakeRotation((float)Math.PI / 2);
 						DisplayView.Transform = CGAffineTransform.MakeScale(-1, 1);
@@ -123,6 +139,46 @@ namespace FaceFinder
 				// Report error
 				Console.WriteLine("Error sampling buffer: {0}", e.Message);
 			}
+		}
+
+		void OutputRecorder_SentImage(object sender, UIImage e)
+		{
+			sentImage -= OutputRecorder_SentImage;
+			NSArray arrFaces = _faceDetector.DetectFaces(e);
+			for (nuint i = 0; i < arrFaces.Count; i++)
+			{
+				NSValue valRect = arrFaces.GetItem<NSValue>(i);
+
+				//InvokeOnMainThread(() => { Console.WriteLine("face: {0}", valRect.CGRectValue); });
+				InvokeOnMainThread(() => { findRect?.Invoke(null, new CGRect(valRect.CGRectValue.Location.Y / 2.25, valRect.CGRectValue.Location.X / 2, valRect.CGRectValue.Size.Width / 2 , valRect.CGRectValue.Height / 2.25)); });
+
+			}
+			sentImage += OutputRecorder_SentImage;
+		}
+
+		UIImage DrawFaces(UIImage srcImage, NSArray arrFaces)
+		{
+			UIGraphics.BeginImageContext(srcImage.Size);
+			CGContext context = UIGraphics.GetCurrentContext();
+
+			//draw src image
+			srcImage.Draw(new CGRect(0, 0, srcImage.Size.Width, srcImage.Size.Height));
+
+			//draw faces
+			for (nuint i = 0; i < arrFaces.Count; i++)
+			{
+				NSValue valRect = arrFaces.GetItem<NSValue>(i);
+				CGRect rect = valRect.CGRectValue;
+
+				//draw
+				context.SetStrokeColor(UIColor.Red.CGColor);
+				context.SetLineWidth(2);
+				context.StrokeRect(rect);
+			}
+
+			UIImage dstImage = UIGraphics.GetImageFromCurrentImageContext();
+			UIGraphics.EndImageContext();
+			return dstImage;
 		}
 		#endregion
 	}
