@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AVFoundation;
 using CoreGraphics;
 using CoreMedia;
@@ -18,7 +19,7 @@ namespace FaceFinder
 		/// <value>The display view.</value>
 		public UIImageView DisplayView { get; set; }
 		private FaceDetector.OpenCVXamarin.Binding.FaceDetector _faceDetector;
-		public event EventHandler<CGRect> findRect;
+		public event EventHandler<List<CGRect>> findRect;
 		public event EventHandler<UIImage> sentImage;
 		#endregion
 
@@ -111,10 +112,18 @@ namespace FaceFinder
 							var oldImg = DisplayView.Image;
 						oldImg?.Dispose();
 
-						DisplayView.Image = image;
+						//DisplayView.Image = UIImage.FromImage(image.CGImage, 1, UIImageOrientation.Right).Scale(UIScreen.MainScreen.Bounds.Size, 1);
 
+						DisplayView.Image = UIImage.FromImage(UIImage.FromImage(image.CGImage, 1, UIImageOrientation.Right).Scale(UIScreen.MainScreen.Bounds.Size, 1).CGImage, 1, UIImageOrientation.UpMirrored);
+						//DisplayView.Transform = CGAffineTransform.MakeScale(-1, 1);
+						//DisplayView.Transform = CGAffineTransform.Rotate(DisplayView.Transform, (float)Math.PI / 2);
+						DisplayView.Frame = UIScreen.MainScreen.Bounds;
+						DisplayView.ContentMode = UIViewContentMode.ScaleAspectFit;
+
+
+						var img = DisplayView.Image;
 						//UIImage srcImage = UIImage.FromBundle("lena1");
-						InvokeInBackground(() => { sentImage?.Invoke(null, image); });
+						InvokeInBackground(() => { sentImage?.Invoke(null, img); });
 
 
 						////redraw image
@@ -123,10 +132,6 @@ namespace FaceFinder
 
 							// Rotate image to the correct display orientation
 							//DisplayView.Transform = CGAffineTransform.MakeRotation((float)Math.PI / 2);
-						DisplayView.Transform = CGAffineTransform.MakeScale(-1, 1);
-						DisplayView.Transform = CGAffineTransform.Rotate(DisplayView.Transform, (float)Math.PI / 2);
-						DisplayView.Frame = UIScreen.MainScreen.Bounds;
-						DisplayView.ContentMode = UIViewContentMode.ScaleAspectFit;
 					});
 				}
 
@@ -145,14 +150,34 @@ namespace FaceFinder
 		{
 			sentImage -= OutputRecorder_SentImage;
 			NSArray arrFaces = _faceDetector.DetectFaces(e);
-			for (nuint i = 0; i < arrFaces.Count; i++)
-			{
-				NSValue valRect = arrFaces.GetItem<NSValue>(i);
+			//List<CGRect> Frames = new List<CGRect>();
+			////if (arrFaces.Count == 0)
+			////{
+			////	InvokeOnMainThread(() => { findRect?.Invoke(null, new List<CGRect>()); });
+			////}
+			//for (nuint i = 0; i < arrFaces.Count; i++)
+			//{
+			//	NSValue valRect = arrFaces.GetItem<NSValue>(i);
 
-				//InvokeOnMainThread(() => { Console.WriteLine("face: {0}", valRect.CGRectValue); });
-				InvokeOnMainThread(() => { findRect?.Invoke(null, new CGRect(valRect.CGRectValue.Location.Y / 2.25, valRect.CGRectValue.Location.X / 2, valRect.CGRectValue.Size.Width / 2 , valRect.CGRectValue.Height / 2.25)); });
+			//	//var temp = DrawFaces(e, arrFaces);
 
-			}
+			//	//InvokeOnMainThread(() => { Console.WriteLine("face: {0}", valRect.CGRectValue); });
+			//	Frames.Add(new CGRect(UIScreen.MainScreen.Bounds.Width - valRect.CGRectValue.Size.Width - valRect.CGRectValue.Location.X, valRect.CGRectValue.Location.Y, valRect.CGRectValue.Size.Width, valRect.CGRectValue.Height));
+			//	//InvokeOnMainThread(() => { temp.SaveToPhotosAlbum(null); });
+			//}
+			////InvokeOnMainThread(() => { findRect?.Invoke(null, Frames); });
+
+
+
+			InvokeOnMainThread(() => { 
+				List<CGRect> Frames = new List<CGRect>();
+				for (nuint i = 0; i < arrFaces.Count; i++)
+				{
+					NSValue valRect = arrFaces.GetItem<NSValue>(i);
+					Frames.Add(new CGRect(UIScreen.MainScreen.Bounds.Width - valRect.CGRectValue.Size.Width - valRect.CGRectValue.Location.X, valRect.CGRectValue.Location.Y, valRect.CGRectValue.Size.Width, valRect.CGRectValue.Height));
+				}
+				findRect?.Invoke(null, Frames);
+			});
 			sentImage += OutputRecorder_SentImage;
 		}
 

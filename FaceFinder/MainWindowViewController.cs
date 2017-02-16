@@ -2,6 +2,7 @@
 using UIKit;
 using CoreGraphics;
 using AVFoundation;
+using System.Collections.Generic;
 
 namespace FaceFinder
 {
@@ -11,7 +12,7 @@ namespace FaceFinder
 		public UILabel HelloLabel;
 		public UILabel CountLabel;
 		public UIButton ClickButton;
-		public UIView RedSquare;
+		public List<UIView> RedSquaresList;
 		//public UIButton CameraButton;
 		public UIImagePickerController imagePicker;
 		public bool onlyPhoto = true;
@@ -26,18 +27,15 @@ namespace FaceFinder
 			//PhotoImageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 			View.AddSubview(PhotoImageView);
 
-			//RedSquare = new UIView(new CGRect(0, 0, 50, 50));
+			RedSquaresList = new List<UIView>();
 
-			//RedSquare.Layer.BorderWidth = 5f;
-			//RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
 
-			//View.AddSubview(RedSquare);
 
-			HelloLabel = new UILabel();
-			HelloLabel.Text = "Hello World!!";
-			HelloLabel.Font = UIFont.PreferredTitle1;
-			HelloLabel.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 2 - HelloLabel.IntrinsicContentSize.Width / 2, 30f, HelloLabel.IntrinsicContentSize.Width, HelloLabel.IntrinsicContentSize.Height);
-			View.AddSubview(HelloLabel);
+			//HelloLabel = new UILabel();
+			//HelloLabel.Text = "Hello World!!";
+			//HelloLabel.Font = UIFont.PreferredTitle1;
+			//HelloLabel.Frame = new CGRect(UIScreen.MainScreen.Bounds.Width / 2 - HelloLabel.IntrinsicContentSize.Width / 2, 30f, HelloLabel.IntrinsicContentSize.Width, HelloLabel.IntrinsicContentSize.Height);
+			//View.AddSubview(HelloLabel);
 
 			//CountLabel = new UILabel(new CGRect(UIScreen.MainScreen.Bounds.Width / 2 - "0".StringSize(UIFont.PreferredTitle1).Width / 2, HelloLabel.Frame.GetMaxY() + 10f, "0".StringSize(UIFont.PreferredTitle1).Width, "0".StringSize(UIFont.PreferredTitle1).Height));
 			//CountLabel.Font = UIFont.PreferredTitle1;
@@ -84,14 +82,40 @@ namespace FaceFinder
 			}
 		}
 
-		void Recorder_FindRect(object sender, CGRect e)
+		void Recorder_FindRect(object sender, List<CGRect> e)
 		{
 			InvokeOnMainThread(() => {
 
-				//RedSquare.Frame = e;	
-				var frame = HelloLabel.Frame;
-				frame.Location = e.Location;
-				HelloLabel.Frame = frame;
+				//if (e.Equals(new CGRect(0, 0, 0, 0))){
+				//	RedSquare.Alpha = 0f;
+				//}
+				//else {
+				//	RedSquare.Alpha = 1f;
+				//	RedSquare.Frame = e;
+				//}
+				foreach (UIView square in RedSquaresList)
+				{
+					square.RemoveFromSuperview();
+				}
+				RedSquaresList.Clear();
+
+				foreach (CGRect rect in e)
+				{
+					
+					UIView RedSquare = new UIView(rect);
+
+					RedSquare.Layer.BorderWidth = 5f;
+					RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
+
+					View.AddSubview(RedSquare);
+					RedSquaresList.Add(RedSquare);
+				}
+
+
+
+				//var frame = HelloLabel.Frame;
+				//frame.Location = e.Location;
+				//HelloLabel.Frame = frame;
 			});
 		}
 
