@@ -114,6 +114,7 @@
     <Compile Include="MainWindowViewController.cs" />
     <Compile Include="CameraViewController.cs" />
     <Compile Include="OutputRecorder.cs" />
+    <Compile Include="MaskObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Downloads\xamarin.ios-opencv-master\xamarin\FaceDetector.OpenCVXamarin\FaceDetector.OpenCVXamarin.Binding\FaceDetector.OpenCVXamarin.Binding.csproj">
@@ -123,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\lena1.png" />
+    <BundleResource Include="Resources\redNose.png" />
+    <BundleResource Include="Resources\pixelSpectacles.png" />
+    <BundleResource Include="Resources\blackSpectacles.png" />
+    <BundleResource Include="Resources\thinSpectacles.png" />
+    <BundleResource Include="Resources\blackSpectacles2.png" />
+    <BundleResource Include="Resources\matrixSpectacles.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

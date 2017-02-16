@@ -104,8 +104,23 @@ namespace FaceFinder
 					
 					UIView RedSquare = new UIView(rect);
 
+					UIImageView nose = new UIImageView();
+					nose.Image = UIImage.FromBundle("redNose").Scale(new CGSize(rect.Size.Width / 4, rect.Size.Height / 4), 1);
+					nfloat x = rect.Size.Width / 2 - rect.Size.Width / 8;
+					nfloat y = rect.Size.Height / 2;
+					nose.Frame = new CGRect(new CGPoint(x, y), nose.Image.Size);
+					RedSquare.AddSubview(nose);
+
+					UIImageView spect = new UIImageView();
+					spect.Image = UIImage.FromBundle("blackSpectacles2").Scale(new CGSize(rect.Size.Width * 0.9f, rect.Size.Height * 0.5f), 1);
+					nfloat xSpect = rect.Size.Width * 0.05f;
+					nfloat ySpect = rect.Size.Height * 0.15f;
+					spect.Frame = new CGRect(new CGPoint(xSpect, ySpect), spect.Image.Size);
+					RedSquare.AddSubview(spect);
+
 					RedSquare.Layer.BorderWidth = 5f;
-					RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
+					//RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
+					RedSquare.Layer.BorderColor = UIColor.Clear.CGColor;
 
 					View.AddSubview(RedSquare);
 					RedSquaresList.Add(RedSquare);
