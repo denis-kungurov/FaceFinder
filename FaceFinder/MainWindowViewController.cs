@@ -9,15 +9,25 @@ namespace FaceFinder
 	public class MainWindowViewController : UIViewController
 	{
 		int count = 0;
-		public UILabel HelloLabel;
-		public UILabel CountLabel;
+		//public UILabel HelloLabel;
+		//public UILabel CountLabel;
 		public UIButton ClickButton;
 		public List<UIView> RedSquaresList;
 		//public UIButton CameraButton;
 		public UIImagePickerController imagePicker;
 		public bool onlyPhoto = true;
+		public bool multipleFace = false;
+		public UISwitch FindingMode;
 
 		public UIImageView PhotoImageView;
+
+		void FindingMode_ValueChanged(object sender, EventArgs e)
+		{
+			InvokeOnMainThread(() => { 
+				multipleFace = FindingMode.On;
+			});
+		}
+
 		public MainWindowViewController()
 		{
 			PhotoImageView = new UIImageView();
@@ -28,6 +38,11 @@ namespace FaceFinder
 			View.AddSubview(PhotoImageView);
 
 			RedSquaresList = new List<UIView>();
+
+			//FindingMode = new UISwitch(new CGRect(UIScreen.MainScreen.Bounds.Size.Width / 2 - UIScreen.MainScreen.Bounds.Size.Width / 8, UIScreen.MainScreen.Bounds.Size.Height - UIScreen.MainScreen.Bounds.Size.Width / 8, UIScreen.MainScreen.Bounds.Size.Width / 4, UIScreen.MainScreen.Bounds.Size.Width / 8));
+			//FindingMode.ValueChanged += FindingMode_ValueChanged;
+
+			//View.AddSubview(FindingMode);
 
 
 
@@ -42,14 +57,14 @@ namespace FaceFinder
 			//CountLabel.Text = "0";
 			//View.AddSubview(CountLabel);
 
-			//ClickButton = new UIButton(new CGRect(UIScreen.MainScreen.Bounds.Width / 4, CountLabel.Frame.GetMaxY() + 10f, UIScreen.MainScreen.Bounds.Width / 2, 50f));
-			//ClickButton.SetTitle("Click Me!", UIControlState.Normal);
-			//View.AddSubview(ClickButton);
+			ClickButton = new UIButton(new CGRect(UIScreen.MainScreen.Bounds.Size.Width / 2 - UIScreen.MainScreen.Bounds.Size.Width / 4, UIScreen.MainScreen.Bounds.Size.Height - UIScreen.MainScreen.Bounds.Size.Width / 4, UIScreen.MainScreen.Bounds.Size.Width / 2, UIScreen.MainScreen.Bounds.Size.Width / 4));
+			ClickButton.SetTitle("Change Mode", UIControlState.Normal);
+			View.AddSubview(ClickButton);
 
 
 			//HelloLabel.TextColor = UIColor.Red;
-			//ClickButton.BackgroundColor = UIColor.Blue;
-			//ClickButton.SetTitleColor(UIColor.Yellow, UIControlState.Normal);
+			ClickButton.BackgroundColor = UIColor.Blue;
+			ClickButton.SetTitleColor(UIColor.Yellow, UIControlState.Normal);
 
 			//CameraButton = new UIButton(new CGRect(UIScreen.MainScreen.Bounds.Width / 4, ClickButton.Frame.GetMaxY() + 10f, UIScreen.MainScreen.Bounds.Width / 2, 50f));
 			//CameraButton.SetTitle("Open Camera", UIControlState.Normal);
@@ -93,38 +108,102 @@ namespace FaceFinder
 				//	RedSquare.Alpha = 1f;
 				//	RedSquare.Frame = e;
 				//}
-				foreach (UIView square in RedSquaresList)
+
+
+				if (multipleFace)
 				{
-					square.RemoveFromSuperview();
+					if (SingleSquare != null)
+					{
+						SingleSquare.RemoveFromSuperview();
+						SingleSquare = null;
+					}
+					foreach (UIView square in RedSquaresList)
+					{
+						square.RemoveFromSuperview();
+					}
+					RedSquaresList.Clear();
+
+					foreach (CGRect rect in e)
+					{
+
+						UIView RedSquare = new UIView(rect);
+
+						UIImageView nose = new UIImageView();
+						nose.Image = UIImage.FromBundle("redNose").Scale(new CGSize(rect.Size.Width / 4, rect.Size.Height / 4), 1);
+						nfloat x = rect.Size.Width / 2 - rect.Size.Width / 8;
+						nfloat y = rect.Size.Height / 2;
+						nose.Frame = new CGRect(new CGPoint(x, y), nose.Image.Size);
+						RedSquare.AddSubview(nose);
+
+						UIImageView spect = new UIImageView();
+						spect.Image = UIImage.FromBundle("blackSpectacles2").Scale(new CGSize(rect.Size.Width * 0.9f, rect.Size.Height * 0.5f), 1);
+						nfloat xSpect = rect.Size.Width * 0.05f;
+						nfloat ySpect = rect.Size.Height * 0.15f;
+						spect.Frame = new CGRect(new CGPoint(xSpect, ySpect), spect.Image.Size);
+						RedSquare.AddSubview(spect);
+
+						RedSquare.Layer.BorderWidth = 5f;
+						//RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
+						RedSquare.Layer.BorderColor = UIColor.Clear.CGColor;
+
+						View.AddSubview(RedSquare);
+						RedSquaresList.Add(RedSquare);
+					}
 				}
-				RedSquaresList.Clear();
+				else {
+					foreach (UIView square in RedSquaresList)
+					{
+						square.RemoveFromSuperview();
+					}
+					if (e.Count == 0)
+					{
+						if (SingleSquare != null)
+							SingleSquare.Alpha = 0f;
+					}
+					else {
+						if (SingleSquare == null)
+						{
+							SingleSquare = new UIView(e[0]);
 
-				foreach (CGRect rect in e)
-				{
-					
-					UIView RedSquare = new UIView(rect);
+							SingleNose = new UIImageView();
+							SingleNose.Image = UIImage.FromBundle("redNose").Scale(new CGSize(e[0].Size.Width / 4, e[0].Size.Height / 4), 1);
+							nfloat x = e[0].Size.Width / 2 - e[0].Size.Width / 8;
+							nfloat y = e[0].Size.Height / 2;
+							SingleNose.Frame = new CGRect(new CGPoint(x, y), SingleNose.Image.Size);
+							SingleSquare.AddSubview(SingleNose);
 
-					UIImageView nose = new UIImageView();
-					nose.Image = UIImage.FromBundle("redNose").Scale(new CGSize(rect.Size.Width / 4, rect.Size.Height / 4), 1);
-					nfloat x = rect.Size.Width / 2 - rect.Size.Width / 8;
-					nfloat y = rect.Size.Height / 2;
-					nose.Frame = new CGRect(new CGPoint(x, y), nose.Image.Size);
-					RedSquare.AddSubview(nose);
+							SingleSpectacles = new UIImageView();
+							SingleSpectacles.Image = UIImage.FromBundle("blackSpectacles2").Scale(new CGSize(e[0].Size.Width * 0.9f, e[0].Size.Height * 0.5f), 1);
+							nfloat xSpect = e[0].Size.Width * 0.05f;
+							nfloat ySpect = e[0].Size.Height * 0.15f;
+							SingleSpectacles.Frame = new CGRect(new CGPoint(xSpect, ySpect), SingleSpectacles.Image.Size);
+							SingleSquare.AddSubview(SingleSpectacles);
 
-					UIImageView spect = new UIImageView();
-					spect.Image = UIImage.FromBundle("blackSpectacles2").Scale(new CGSize(rect.Size.Width * 0.9f, rect.Size.Height * 0.5f), 1);
-					nfloat xSpect = rect.Size.Width * 0.05f;
-					nfloat ySpect = rect.Size.Height * 0.15f;
-					spect.Frame = new CGRect(new CGPoint(xSpect, ySpect), spect.Image.Size);
-					RedSquare.AddSubview(spect);
+							SingleSquare.Layer.BorderWidth = 5f;
+							//RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
+							SingleSquare.Layer.BorderColor = UIColor.Clear.CGColor;
 
-					RedSquare.Layer.BorderWidth = 5f;
-					//RedSquare.Layer.BorderColor = UIColor.Red.CGColor;
-					RedSquare.Layer.BorderColor = UIColor.Clear.CGColor;
+							View.AddSubview(SingleSquare);
+						}
+						else {
+							SingleSquare.Alpha = 1f;
+							UIView.Animate(0.2f, () =>
+							{
+								SingleSquare.Frame = e[0];
+								SingleNose.Image = UIImage.FromBundle("redNose").Scale(new CGSize(e[0].Size.Width / 4, e[0].Size.Height / 4), 1);
+								nfloat x = e[0].Size.Width / 2 - e[0].Size.Width / 8;
+								nfloat y = e[0].Size.Height / 2;
+								SingleNose.Frame = new CGRect(new CGPoint(x, y), SingleNose.Image.Size);
 
-					View.AddSubview(RedSquare);
-					RedSquaresList.Add(RedSquare);
+								SingleSpectacles.Image = UIImage.FromBundle("blackSpectacles2").Scale(new CGSize(e[0].Size.Width * 0.9f, e[0].Size.Height * 0.5f), 1);
+								nfloat xSpect = e[0].Size.Width * 0.05f;
+								nfloat ySpect = e[0].Size.Height * 0.15f;
+								SingleSpectacles.Frame = new CGRect(new CGPoint(xSpect, ySpect), SingleSpectacles.Image.Size);
+							});
+						}
+					}
 				}
+
 
 
 
@@ -134,13 +213,18 @@ namespace FaceFinder
 			});
 		}
 
+		public UIView SingleSquare;
+		public UIImageView SingleNose;
+		public UIImageView SingleSpectacles;
+		
+
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
 
 			//CountLabel.Text = count.ToString();
 			//CountLabel.Frame = new CoreGraphics.CGRect(CountLabel.Frame.Location, CountLabel.IntrinsicContentSize);
-			//ClickButton.TouchUpInside += ClickButton_TouchUpInside;
+			ClickButton.TouchUpInside += ClickButton_TouchUpInside;
 
 			//CameraButton.TouchUpInside += CameraButton_TouchUpInside;
 
@@ -172,9 +256,10 @@ namespace FaceFinder
 
 		void ClickButton_TouchUpInside (object sender, EventArgs e)
 		{
-			count++;
-			CountLabel.Text = count.ToString();
-			CountLabel.Frame = new CoreGraphics.CGRect(CountLabel.Frame.Location, CountLabel.IntrinsicContentSize);
+			multipleFace = !multipleFace;
+			//count++;
+			//CountLabel.Text = count.ToString();
+			//CountLabel.Frame = new CoreGraphics.CGRect(CountLabel.Frame.Location, CountLabel.IntrinsicContentSize);
 		}
 
 		//void CameraButton_TouchUpInside(object sender, EventArgs e)
@@ -194,7 +279,7 @@ namespace FaceFinder
 		public override void ViewDidDisappear(bool animated)
 		{
 			base.ViewDidDisappear(animated);
-			//ClickButton.TouchUpInside -= ClickButton_TouchUpInside;
+			ClickButton.TouchUpInside -= ClickButton_TouchUpInside;
 			//CameraButton.TouchUpInside -= CameraButton_TouchUpInside;
 			ThisApp.Recorder.findRect -= Recorder_FindRect;
 		}

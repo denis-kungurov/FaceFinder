@@ -21,6 +21,8 @@ namespace FaceFinder
 		private FaceDetector.OpenCVXamarin.Binding.FaceDetector _faceDetector;
 		public event EventHandler<List<CGRect>> findRect;
 		public event EventHandler<UIImage> sentImage;
+		public int devider = 6;
+		public bool empty = true;
 		#endregion
 
 		#region Constructors
@@ -121,7 +123,7 @@ namespace FaceFinder
 						DisplayView.ContentMode = UIViewContentMode.ScaleAspectFit;
 
 
-						var img = DisplayView.Image;
+						var img = DisplayView.Image.Scale(new CGSize(UIScreen.MainScreen.Bounds.Size.Width / devider, UIScreen.MainScreen.Bounds.Size.Height / devider), 1);
 						//UIImage srcImage = UIImage.FromBundle("lena1");
 						InvokeInBackground(() => { sentImage?.Invoke(null, img); });
 
@@ -169,14 +171,25 @@ namespace FaceFinder
 
 
 
-			InvokeOnMainThread(() => { 
+			InvokeOnMainThread(() => {
 				List<CGRect> Frames = new List<CGRect>();
-				for (nuint i = 0; i < arrFaces.Count; i++)
+				if (arrFaces.Count != 0)
 				{
-					NSValue valRect = arrFaces.GetItem<NSValue>(i);
-					Frames.Add(new CGRect(UIScreen.MainScreen.Bounds.Width - valRect.CGRectValue.Size.Width - valRect.CGRectValue.Location.X, valRect.CGRectValue.Location.Y, valRect.CGRectValue.Size.Width, valRect.CGRectValue.Height));
+					empty = false;
+					for (nuint i = 0; i < arrFaces.Count; i++)
+					{
+						NSValue valRect = arrFaces.GetItem<NSValue>(i);
+						Frames.Add(new CGRect(valRect.CGRectValue.Location.X * devider, valRect.CGRectValue.Location.Y * devider, valRect.CGRectValue.Size.Width * devider, valRect.CGRectValue.Height * devider));
+					}
+					findRect?.Invoke(null, Frames);
 				}
-				findRect?.Invoke(null, Frames);
+				else {
+					if (!empty)
+					{
+						empty = true;
+						findRect?.Invoke(null, Frames);
+					}
+				}
 			});
 			sentImage += OutputRecorder_SentImage;
 		}
