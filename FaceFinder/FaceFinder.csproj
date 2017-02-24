@@ -36,7 +36,7 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: ridik18.03@mail.ru (553UT2NY32)</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
@@ -70,7 +70,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: Denis Kungurov (5ND6LM6PYL)</CodesignKey>
+    <CodesignKey>iPhone Developer: ridik18.03@mail.ru (553UT2NY32)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -83,6 +83,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>7653d14e-d086-4961-958f-09a588e1a54d</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -130,6 +131,11 @@
     <BundleResource Include="Resources\blackSpectacles2.png" />
     <BundleResource Include="Resources\matrixSpectacles.png" />
     <BundleResource Include="Resources\haarcascade_frontalface_alt.xml" />
+    <BundleResource Include="Resources\mustache1.png" />
+    <BundleResource Include="Resources\beard2.png" />
+    <BundleResource Include="Resources\beard1.png" />
+    <BundleResource Include="Resources\mustache2.png" />
+    <BundleResource Include="Resources\yellowSpeclacles.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

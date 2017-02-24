@@ -21,7 +21,7 @@ namespace FaceFinder
 		private FaceDetector.OpenCVXamarin.Binding.FaceDetector _faceDetector;
 		public event EventHandler<List<CGRect>> findRect;
 		public event EventHandler<UIImage> sentImage;
-		public int devider = 6;
+		public int devider = 1;
 		public bool empty = true;
 		#endregion
 
